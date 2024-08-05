@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contador de Visitas</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+        h1 {
+            font-size: 24px;
+        }
+        #visitCount {
+            font-size: 32px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Esta página ha sido abierta:</h1>
+    <div id="visitCount">0</div>
+
+    <script>
+        // Obtener el contador de visitas del localStorage
+        let visitCount = localStorage.getItem('visitCount');
+
+        // Si no existe, inicializar el contador a 0
+        if (visitCount === null) {
+            visitCount = 0;
+        } else {
+            visitCount = parseInt(visitCount);
+        }
+
+        // Incrementar el contador
+        visitCount++;
+
+        // Guardar el nuevo contador en localStorage
+        localStorage.setItem('visitCount', visitCount);
+
+        // Mostrar el contador en la página
+        document.getElementById('visitCount').textContent = visitCount;
+    </script>
+
+</body>
+</html>
